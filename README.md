@@ -42,4 +42,4 @@ Technology stack:
 - Docker
 - Terraform
 - Bash Scripting 
-- AWS (ECS, ECR, IAM, SECURITY GROUP, ALB, FARGATE, VPC, EC2(Jenkins server)and CLOUDWATCH(logs and metrics))
+- AWS ( EKS, EC2 NODE GROUPS, ECR, IAM, SECURITY GROUP, ALB VPC, EC2(Jenkins server)and CLOUDWATCH(logs and metrics))

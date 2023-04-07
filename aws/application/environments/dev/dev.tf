@@ -20,19 +20,19 @@ module "dev_eks" {
     namespace                 = 
     stage                     = "dev"
     azs                       = [
-    cloudwatch_log_group_name = "DLFrame-eks-dev"
+    cloudwatch_log_group_name = "user-app-eks-dev"
     cloudwatch_log_stream     = "eks"
-    name_prefix               = "DLFrame-app"
-    tag                       = "DLFrame-dev"
+    name_prefix               = "user-app"
+    tag                       = "user-app-dev"
     disk_size                 = 20
-    cluster_name              = "DLFrame-dev"
+    cluster_name              = "user-app-dev"
     PATH_TO_PUBLIC_KEY        = "mykey.pub"
     PATH_TO_PRIVATE_KEY       = "mykey"
     kubernetes_version        = "1.23"
-    node_grp_name             = "DLFrame_node_group"
+    node_grp_name             = "user-app_node_group"
     ami_id                    = "ami-08e637cea2f053dfa"
     keypair                   = "mykeypair"
-    domain                    = "DLFrame"
+    domain                    = "user-app"
     environ                   = "dev"
 
 }

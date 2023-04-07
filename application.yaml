@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: "https://github.com/lanru2001/aks-nodejs-argocd-poc.git"
+    repoURL: "https://github.com/lanru2001/eks-nodejs-react-application.git"
     targetRevision: HEAD
     path: kubernetes
   destination:

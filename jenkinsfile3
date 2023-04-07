@@ -57,41 +57,8 @@ pipeline {
             }
       }    
     
-      stage('Update To Task Definition') {
-         steps {
-             script {
-                 withAWS(region: 'us-east-2', credentials: 'awsId') {
-                    taskDefRegistry = readJSON text: sh(returnStdout: true, script:"aws ecs register-task-definition) \
-                        --memory 512 \
-                        --cpu 256 \
-                        --task-role-arn $TASK_ROLE_ARN \
-                        --family $FAMILY \
-                        --network-mode $NETWORK_MODE \
-                        --requires-compatibilities $REQ_COMPATIBILITIES \
-                        --cli-input-json ("file://taskdef.json"), returnPojo: true
-                 }
-             }
-         }
-      }  
- 
-      stage('Update To ECS') {
-          steps {
-             script { 
-                try {
-                   withAWS(region: 'us-east-2', credentials: 'awsId') {
-                      def updateService    = " aws ecs update-service  --service $ECS_SERVICE   --cluster $ECS_CLUSTER  --force-new-deployment "
-                      def runUpdateService = sh(returnStdout: true, script: updateService)
-                      def serviceStable    = "aws ecs wait services-stable --service $ECS_SERVICE --cluster $ECS_CLUSTER "
-                      sh(returnStdout: true, script: serviceStable)
-                      # put all your slack messaging here
-                   }
-                }  
-                catch(Exception e) {
-                    echo e.message.toString()
-                }
-             }
-          } 
-      }    
+    
+      
           
   }
 }

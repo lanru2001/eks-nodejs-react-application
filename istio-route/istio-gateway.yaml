@@ -2,8 +2,8 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: my-argocd-gateway
-  namespace: argocd
+  name: user-nodejs-app-gateway
+  namespace: default
 spec:
   selector:
     istio: ingressgateway

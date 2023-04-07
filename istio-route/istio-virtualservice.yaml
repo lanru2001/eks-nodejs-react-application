@@ -2,11 +2,11 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: argocd-virtualservice
-  namespace: argocd
+  name: user-nodejs-app-virtualservice
+  namespace: default
 spec:
   gateways:
-  - my-argocd-gateway
+  - user-nodejs-app-gateway
   hosts:
   - '*'
   http:
@@ -15,6 +15,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: argocd-server.argocd.svc.cluster.local
+        host: <servicename>.default.svc.cluster.local
         port:
           number: 80

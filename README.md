@@ -32,8 +32,8 @@ Have this command node ./api/server.js with the CMD. This automatically runs whe
 
 
 ## Nodejs-React Application Architecture Design
+![image](https://user-images.githubusercontent.com/59709429/230519489-32d977b4-889d-40d2-b848-a64f465ec85e.png)
 
-![image](https://user-images.githubusercontent.com/59709429/134820678-2f6a7a5e-9b5a-4399-87bc-198242c5279a.png)
 
 Technology stack:
 - Nodejs

@@ -1,11 +1,17 @@
 # Documentation for github action - https://docs.github.com/en/actions/quickstart
 # https://gbengaoni.com/blog/Kubernetes-CI-CD-with-Github-Actions-and-Helm
+
+#Nmae of the workflow 
 name: Deploy to k8s
 
+#Rule to trigger the workflow
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
+#Jobs to run   
 jobs:
   deploy-to-k8s:
 

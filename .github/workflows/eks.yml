@@ -1,3 +1,4 @@
+# Documentation for github action - https://docs.github.com/en/actions/quickstart
 # https://gbengaoni.com/blog/Kubernetes-CI-CD-with-Github-Actions-and-Helm
 name: Deploy to k8s
 

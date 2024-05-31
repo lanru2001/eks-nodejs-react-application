@@ -28,6 +28,39 @@ resource "aws_cloudwatch_log_group" "eks_cluster" {
   }
 }
 
+#EKS Addon - Amazon VPC CNI(Enable pod networking within your cluster)
+# aws_eks_addon.amazon_vpc_cni:
+resource "aws_eks_addon" "amazon_vpc_cni" {
+    addon_name    = "vpc-cni"
+    addon_version = "v1.17.1-eksbuild.1"
+    cluster_name  = aws_eks_cluster.eks_cluster.name
+}
+
+#EKS Addon - coredns(Enable service discovery within your cluster)
+# aws_eks_addon.core_dns:
+resource "aws_eks_addon" "core_dns" {
+    addon_name    = "coredns"
+    addon_version = "v1.10.1-eksbuild.7"
+    cluster_name  = aws_eks_cluster.eks_cluster.name
+
+}
+
+#EKS Addon - kube proxy (Enable service networking within your cluster)
+# aws_eks_addon.kube_proxy:
+resource "aws_eks_addon" "kube_proxy" {
+    addon_name    = "kube-proxy"
+    addon_version = "v1.28.6-eksbuild.2"
+    cluster_name  = aws_eks_cluster.eks_cluster.name
+
+}
+
+#Enable Elastic Block Storage(EBS) within the cluster
+resource "aws_eks_addon" "ebs_csi-driver" {
+    addon_name    = "aws-ebs-csi-driver"
+    addon_version = "v1.28.0-eksbuild.1"
+    cluster_name  = aws_eks_cluster.eks_cluster.name
+}
+
 #It is actually possible to run the entire cluster fully on Fargate, but it requires some tweaking of the CoreDNS deployment
 resource "aws_eks_node_group" "eks_node_group" {
   cluster_name                = aws_eks_cluster.eks_cluster.name

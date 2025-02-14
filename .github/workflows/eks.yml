@@ -4,9 +4,9 @@ name: Deploy to k8s
 #Rule to trigger the workflow
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 #Jobs to run   
 jobs:

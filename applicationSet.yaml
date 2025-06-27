@@ -1,14 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: user-mgmt
-  namespace: argocd
+  name: user-mgmt-app
+  namespace: default
 spec:
   generators:
     - list:
         elements:
           - env: dev
-            valuesFile: values/dev-values.yaml
+            valuesFile: helm-chart/nodejs-user-app/dev-values.yaml
+
   template:
     metadata:
       name:  user-mgmt-{{ env }}
@@ -23,7 +24,7 @@ spec:
             - {{ valuesFile }}
       destination:
         server: https://kubernetes.default.svc
-        namespace: user-mgmt-{{ env }}
+        namespace: default
       syncPolicy:
         automated:
           prune: true

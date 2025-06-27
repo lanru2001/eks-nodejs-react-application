@@ -2,28 +2,27 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: user-mgmt-app
-  namespace: default
+  namespace: argocd
 spec:
   generators:
     - list:
         elements:
-          - env: dev
-            valuesFile: helm-chart/nodejs-user-app/dev-values.yaml
-
+          - cluster: https://kubernetes.default.svc
+            name: dev
   template:
     metadata:
-      name:  user-mgmt-{{ env }}
+      name: '{{name}}-user-mgmt-app'
     spec:
       project: default
       source:
         repoURL: https://github.com/lanru2001/eks-nodejs-react-application.git
         targetRevision: HEAD
-        path: helm-chart/nodejs-user-app
+        path: eks-nodejs-react-application
         helm:
           valueFiles:
-            - {{ valuesFile }}
+            -  helm-chart/nodejs-user-app/dev-values.yaml
       destination:
-        server: https://kubernetes.default.svc
+        server: '{{cluster}}'
         namespace: default
       syncPolicy:
         automated:
